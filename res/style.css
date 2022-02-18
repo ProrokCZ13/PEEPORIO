@@ -1,0 +1,6 @@
+*{font-family: 'Press Start 2P', cursive;}
+#live{display: block}
+#score{display: block;
+        text-align: center;}
+#timer{display: block;
+        text-align: end;}

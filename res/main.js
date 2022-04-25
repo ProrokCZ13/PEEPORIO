@@ -81,10 +81,10 @@ function animate() {
     player.update()
     platform.draw()
 
-    //pohyb
-    if (key.right.pressed){
+    //pohyb && sidescroll
+    if (key.right.pressed && player.position.x < 400){
         player.velocity.x = 5
-    }else if (key.left.pressed){
+    }else if (key.left.pressed && player.position.x > 100){
         player.velocity.x = -5
     }else player.velocity.x = 0
 
@@ -94,6 +94,12 @@ function animate() {
         && player.position.x + player.width >= platform.position.x
         && player.position.x <= platform.position.x + platform.width){
         player.velocity.y = 0
+    }
+
+    if (key.right.pressed) {
+        platform.position.x -=5
+    }else if (key.left.pressed){
+        platform.position.x +=5
     }
 }
 

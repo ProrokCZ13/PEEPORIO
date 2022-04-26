@@ -14,10 +14,21 @@ let key = {
         pressed: false
     }
 };
+/*textura platforem
+const textureImg = new Image();
+textureImg.src = "../media/img/Textura.jpg"
+ctx.createPattern(textureImg);
+*/
+
+//pozadí
+const background = new Image();
+background.src ="../media/img/background.jpg"
 
 //hráč
 const playerImg = new Image();
-playerImg.src = "./media/img/PPR.png"
+playerImg.src = "../media/img/PPR.png"
+
+
 
 class Player {
     constructor() {
@@ -64,7 +75,7 @@ class Platform{
     }
 
     draw() {
-        ctx.fillStyle ='blue'
+        ctx.fillStyle = 'blue'
         ctx.fillRect(this.position.x,
                      this.position.y,
                      this.width,

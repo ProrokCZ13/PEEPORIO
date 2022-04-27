@@ -14,11 +14,11 @@ let key = {
         pressed: false
     }
 };
-/*textura platforem
-const textureImg = new Image();
-textureImg.src = "../media/img/Textura.jpg"
-ctx.createPattern(textureImg);
-*/
+//textura platforem
+//const textureImg = new Image();
+//textureImg.src = "../media/img/Textura.jpg"
+//const pattern = ctx.createPattern(textureIMG, 'repeat');
+
 
 //pozadí
 const background = new Image();
@@ -65,13 +65,13 @@ class Player {
 
 
 class Platform{
-    constructor({x, y}) {
+    constructor({x, y, h, w}) {
         this.position ={
             x,
             y
         }
-        this.width = 200
-        this.height = 20
+        this.width = w
+        this.height = h
     }
 
     draw() {
@@ -84,10 +84,12 @@ class Platform{
 }
 
 const player = new Player()
-const platforms = [new Platform({x: 100, y:200}),
+const platforms = [new Platform({x: 100, y:200, h: 100, w: 400}),
                    new Platform({x: 100, y:500}),
-                   new Platform({x: 100, y:200}),
-                   new Platform({x: 100, y:200})]
+                   new Platform({x: 200, y:200}),
+                   new Platform({x: 500, y:700}),
+                   new Platform({x: 1000, y:700}),
+                   new Platform({x: 3000, y:canvas.height})]
 
 function animate() {
     requestAnimationFrame(animate)

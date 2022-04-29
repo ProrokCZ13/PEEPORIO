@@ -1,2 +1,5 @@
 *{font-family: 'Press Start 2P', cursive;}
-body{margin: 0;}
+body{margin: 0;
+    background-image: url("../media/img/background.jpg");
+}
+

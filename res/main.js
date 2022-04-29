@@ -17,7 +17,7 @@ let key = {
 };
 //textura platforem
 //const textureImg = new Image();
-//textureImg.src = "../media/img/Textura.jpg"
+//textureImg.src = "/media/img/Textura.jpg"
 //const pattern = ctx.createPattern(textureIMG, 'repeat');
 
 
@@ -138,10 +138,12 @@ const platforms = [new Platform({x: 0, y: 700, h: 500, w: 400}),
                    new Platform({x: 7885, y: 450, h: 20, w: 50}),
                    new Platform({x: 8000, y: 700, h: 500, w: 400}),
                    new Platform({x: 8000, y: 450, h: 800, w: 100}),
+                   new Platform({x: 8500, y: 550, h: 20, w: 50}),
+                   new Platform({x: 8600, y: 600, h: 20, w: 50}),
+                   new Platform({x: 8700, y: 350, h: 20, w: 50}),
                    new Platform({x: 9000, y: 700, h: 500, w: 400}),
+                   new Platform({x: 9500, y: 850, h: 20, w: 400}),
                    new Platform({x: 10000, y: 700, h: 500, w: 400}),
-
-
 ]
 
 function animate() {
@@ -171,8 +173,8 @@ function animate() {
         }
     })
     /*kolize s platformou osa x
-    if (player.position.x + player.width <= platform.position.x
-        && player.position.x >= platform.position.x + platform.width) {
+    if (player.position.x + player.width <= platforms.position.x
+        && player.position.x >= platforms.position.x + platforms.width) {
         player.velocity.x = 0
     }*/
     //sidescroll

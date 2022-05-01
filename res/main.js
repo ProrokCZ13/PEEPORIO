@@ -1,10 +1,13 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-
-
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
+/*
+let song = new audio("./media/sound/Eric Skiff - Underclocked ♫ NO COPYRIGHT 8-bit Music + Background.mp3")
+song.volume = 0.3;
 
+let jumpSound = new audio("./media/sound/Super Mario World - Jump Sound Effect.mp3")
+ */
 let gravity = 0.5;
 let onLand = 1;
 let key = {
@@ -21,14 +24,10 @@ let key = {
 //const pattern = ctx.createPattern(textureIMG, 'repeat');
 
 
-//pozadí
-const background = new Image();
-background.src = "../media/img/background.jpg"
-
-
 //hráč
 const playerImg = new Image();
 playerImg.src = "../media/img/PPR.png"
+
 
 
 class Player {
@@ -41,13 +40,13 @@ class Player {
             x: 0,
             y: 1
         }
-        this.width = 10
-        this.height = 10
+        this.width = 35
+        this.height = 35
     }
 
     draw() {
-        ctx.fillStyle = 'blue'
-        ctx.fillRect(this.position.x,
+        ctx.drawImage(playerImg,
+            this.position.x,
             this.position.y,
             this.height,
             this.width)
@@ -61,7 +60,7 @@ class Player {
         if (this.position.y + this.height +
             this.velocity.y <= canvas.height)
             this.velocity.y += gravity
-        else this.velocity.y = 0
+
     }
 }
 
@@ -141,9 +140,9 @@ const platforms = [new Platform({x: 0, y: 700, h: 500, w: 400}),
                    new Platform({x: 8500, y: 550, h: 20, w: 50}),
                    new Platform({x: 8600, y: 600, h: 20, w: 50}),
                    new Platform({x: 8700, y: 350, h: 20, w: 50}),
-                   new Platform({x: 9000, y: 700, h: 500, w: 400}),
-                   new Platform({x: 9500, y: 850, h: 20, w: 400}),
-                   new Platform({x: 10000, y: 700, h: 500, w: 400}),
+                   new Platform({x: 9000, y: 600, h: 500, w: 400}),
+                   new Platform({x: 9500, y: 700, h: 20, w: 400}),
+                   new Platform({x: 10000, y: 600, h: 500, w: 400}),
 ]
 
 function animate() {
@@ -175,8 +174,18 @@ function animate() {
     /*kolize s platformou osa x
     if (player.position.x + player.width <= platforms.position.x
         && player.position.x >= platforms.position.x + platforms.width) {
-        player.velocity.x = 0
+        platform.position.x = 0
     }*/
+
+    //smrt
+    if (player.position.y > canvas.height){
+        location.reload()
+    }
+
+    if (player.position.x == 10000){
+        console.log("congratulation")
+    }
+
     //sidescroll
     if (key.right.pressed) {
         platforms.forEach(platform => {
@@ -205,6 +214,8 @@ window.addEventListener('keydown', ({keyCode}) => {
         //A
         case 65 || 37:
             key.left.pressed = true
+            player.draw(playerImgL)
+
             break
         //S
         case 83 || 40:
@@ -225,6 +236,7 @@ window.addEventListener('keyup', ({keyCode}) => {
         //W
         case 87:
             player.velocity.y += 7
+
             break
 
         //A
@@ -237,6 +249,7 @@ window.addEventListener('keyup', ({keyCode}) => {
             break
         //D
         case 68 || 39:
+
             key.right.pressed = false
             break
 
